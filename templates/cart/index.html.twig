@@ -31,7 +31,11 @@
             <td>x {{ product.quantity }}</td>
             <td>{{ (product.product.price / 100) |number_format(2, ',', '.') }} €</td>
             <td>{{ ((product.product.price * product.quantity) / 100) |number_format(2, ',', '.') }} €</td>
-            <td><img src="{{ asset('assets/img/delete.png') }}" height="18px" alt="supprimer"></td>
+            <td>
+              <a href="{{ path('delete_to_cart', {'id': product.product.id}) }}">
+                <img src="{{ asset('assets/img/delete.png') }}" height="18px" alt="supprimer">
+              </a>
+            </td>
           </tr>
           {% set total = total + (product.product.price * product.quantity) %}
         {% endfor %}
